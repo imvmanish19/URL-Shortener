@@ -20,8 +20,30 @@ docker compose up -d
 # MySQL: 3307 | Redis: 6379
 ```
 
-### 2. Run Application
+### 2. Build and Test Application
+
+```bash
+./gradlew build
+```
+
+### 3. Run Application
 
 ```bash
 ./gradlew bootRun
 # Base URL: http://localhost:8080
+```
+
+### 4. Run API Curls
+
+- POST /api/short-urls
+- GET /api/short-urls/{code}
+
+```bash
+curl -X POST http://localhost:8080/api/short-urls \
+  -H "Content-Type: application/json" \
+  -d '{"originalUrl": "[https://google.com](https://google.com)"}'
+```
+
+```bash
+curl -v http://localhost:8080/api/short-urls/aB9xPq1
+```
