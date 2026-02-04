@@ -3,6 +3,7 @@ package com.blinklink.urlshortener.application.shorturl;
 import com.blinklink.urlshortener.domain.shorturl.OriginalUrl;
 import com.blinklink.urlshortener.domain.shorturl.ShortCode;
 import com.blinklink.urlshortener.domain.shorturl.ShortUrl;
+import com.blinklink.urlshortener.domain.shorturl.exception.ShortUrlNotFoundException;
 import com.blinklink.urlshortener.domain.shorturl.repository.ShortUrlRepository;
 import com.blinklink.urlshortener.infrastructure.cache.ShortUrlCacheEntry;
 import org.springframework.cache.annotation.Cacheable;
@@ -21,7 +22,7 @@ public class ResolveShortUrlService {
     public ShortUrlCacheEntry resolveCached(String code) {
 
         ShortUrl shortUrl = repository.findByCode(new ShortCode(code))
-                .orElseThrow(() -> new IllegalArgumentException("Not found"));
+                .orElseThrow(() -> new ShortUrlNotFoundException(code));
 
         return new ShortUrlCacheEntry(
                 shortUrl.code().value(),
