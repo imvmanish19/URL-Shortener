@@ -41,9 +41,9 @@ docker compose up -d
 ```bash
 curl -X POST http://localhost:8080/api/short-urls \
   -H "Content-Type: application/json" \
-  -d '{"originalUrl": "[https://google.com](https://google.com)"}'
+  -d '{"originalUrl": "https://google.com"}'
 ```
 
 ```bash
-curl -v http://localhost:8080/api/short-urls/aB9xPq1
+curl -v http://localhost:8080/api/short-urls/{{code}}
 ```
