@@ -32,9 +32,7 @@ public class ShortUrl {
         return originalUrl;
     }
 
-    public List<Object> pullDomainEvents() {
-        var copy = List.copyOf(domainEvents);
-        domainEvents.clear();
-        return copy;
+    public Instant createdAt() {
+        return createdAt;
     }
 }

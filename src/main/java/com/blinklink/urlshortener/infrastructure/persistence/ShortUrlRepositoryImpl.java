@@ -21,7 +21,8 @@ public class ShortUrlRepositoryImpl implements ShortUrlRepository {
     public void save(ShortUrl shortUrl) {
         jpa.save(new ShortUrlJpaEntity(
                 shortUrl.code().value(),
-                shortUrl.originalUrl().value()
+                shortUrl.originalUrl().value(),
+                shortUrl.createdAt()
         ));
     }
 

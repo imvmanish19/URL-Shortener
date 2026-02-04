@@ -9,6 +9,9 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
+
+import java.time.Instant;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Testcontainers
@@ -36,7 +39,7 @@ class ShortUrlRepositoryImplTest {
     @Test
     void shouldPersistShortUrl() {
         ShortUrlJpaEntity entity =
-                new ShortUrlJpaEntity("abc123", "https://example.com");
+                new ShortUrlJpaEntity("abc123", "https://example.com", Instant.now());
 
         jpaRepository.save(entity);
 
